@@ -1,8 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
 import React from 'react'
-import {BrowserRouter} from "react-router-dom"
-
+import {BrowserRouter} from "react-router-dom";
+import AppRouter from "./components/AppRouther";
 function App() {
   return (
     <BrowserRouter>
@@ -20,7 +20,8 @@ function App() {
       {/*    Learn React*/}
       {/*  </a>*/}
       {/*</header>*/}
-      WORKING 356
+        <AppRouter />
+      {/*WORKIN lll*/}
     </BrowserRouter>
   );
 }
