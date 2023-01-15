@@ -1,10 +1,10 @@
 import React from 'react';
-import DevicePage from "./DevicePage";
+// import DevicePage from "./DevicePage";
 
 const Admin = () => {
     return (
         <div>
-            DevicePage
+            Admin
         </div>
     );
 };
