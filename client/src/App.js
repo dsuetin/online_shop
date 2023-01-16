@@ -1,5 +1,5 @@
-import logo from './logo.svg';
-import './App.css';
+// import logo from './logo.svg';
+// import './App.css';
 import React from 'react'
 import {BrowserRouter} from "react-router-dom";
 import AppRouter from "./components/AppRouther";
@@ -9,7 +9,11 @@ function App() {
         <AppRouter />
       {/*WORKIN lll*/}
     </BrowserRouter>
+
+    // <div>
+    //     WORKIN lll
+    // </div>
   );
-}
+};
 
 export default App;

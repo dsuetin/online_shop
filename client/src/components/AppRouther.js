@@ -4,7 +4,7 @@ import {Routes, Route, Outlet, Link, json, Navigate} from "react-router-dom";
 import {authRoutes, publicRoutes} from "../routes";
 import {SHOP_ROUTE} from "../utils/consts";
 // import {Barnd} from "../models/";
-
+import Home from "../pages/Home";
 const AppRouter = () => {
     const isAuth = false
     // return (
@@ -39,45 +39,57 @@ const AppRouter = () => {
         //         </Route>
         //     </Routes>
         // </div>
-
-    // <Routes>
-    //     <Route path="/" element={<Layout />}>
-    //         <Route index element={<Home />} />
-    //         <Route path="about" element={<About />} />
-    //         <Route path="dashboard" element={<Dashboard />} />
-    //
-    //         {/* Using path="*"" means "match anything", so this route
-    //             acts like a catch-all for URLs that we don't have explicit
-    //             routes for. */}
-    //         <Route path="*" element={<NoMatch />} />
-    //     </Route>
-    //
-    //     {/*<Route path="/" element={<Layout />}>*/}
-    //
-    //     {/*</Route>*/}
-    //
-    //     {/*{authRoutes.map(({path, Component}) =>*/}
-    //     {/*    <Route key={path} path={path} element={Component} exact/>*/}
-    //     {/*)}*/}
-    // </Routes>
-    // );
-
     return (
+
         <Routes>
-            WOrkng
-            {/*<Route key="lala" path="/opo" element={<Layout />} />*/}
-            {isAuth && authRoutes.map(({path, Component}) =>
-                <Route key={path} path={path} element={Component}/>
-            )}
             {publicRoutes.map(({path, Component}) =>
-                <Route key={path} path={path} element={Component}/>
+                // console.log('jjjjj')
+            // console.log(path)
+            //     Component.prototype
+                // Component.length
+                // Component.arguments
+                <Route key={path} path={path} element={Component.name}/>
             )}
-            <Navigate to={SHOP_ROUTE}/>
-            {/*<Route path='*' element={<Navigate to={SHOP_ROUTE}/>} />*/}
 
+            {/*<Route path="/" element={<Layout />}>*/}
+            {/*    <Route index element={<Home />} />*/}
+            {/*    <Route path="about" element={<About />} />*/}
+            {/*    <Route path="dashboard" element={<Dashboard />} />*/}
 
+            {/*    /!* Using path="*"" means "match anything", so this route*/}
+            {/*        acts like a catch-all for URLs that we don't have explicit*/}
+            {/*        routes for. *!/*/}
+            {/*    <Route path="*" element={<NoMatch />} />*/}
+            {/*</Route>*/}
+
+            {/*<Route path="/" element={<Layout />}>*/}
+
+            {/*</Route>*/}
+
+            {/*{authRoutes.map(({path, Component}) =>*/}
+            {/*    <Route key={path} path={path} element={Component} exact/>*/}
+            {/*)}*/}
         </Routes>
     );
+    // return (
+    //     <div>
+    //         workin
+    //     </div>
+    // )
+    // return (
+    //     <Routes>
+    //         WOrkng
+    //         <Route key="lala" path="/" element={<Layout />} />
+    //         {isAuth && authRoutes.map(({path, Component}) =>
+    //             <Route key={path} path={path} element={Component}/>
+    //         )}
+    //         {publicRoutes.map(({path, Component}) =>
+    //             <Route key={path} path={path} element={Component}/>
+    //         )}
+    //         <Navigate to={SHOP_ROUTE}/>
+    //         {/*<Route path='*' element={<Navigate to={SHOP_ROUTE}/>} />*/}
+    //     </Routes>
+    // );
 };
 
 function Layout() {
@@ -110,15 +122,17 @@ function Layout() {
             <Outlet />
         </div>
     );
+
+
 }
 
-function Home() {
-    return (
-        <div>
-            <h2>Home</h2>
-        </div>
-    );
-}
+// function Home() {
+//     return (
+//         <div>
+//             <h2>Home</h2>
+//         </div>
+//     );
+// }
 
 function About() {
     return (
