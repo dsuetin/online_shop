@@ -3,9 +3,10 @@ import React from 'react';
 const Shop = () => {
     return (
         <div>
-            Shop
+            Shop 44d
         </div>
     );
 };
 
 export default Shop;
+
