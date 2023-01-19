@@ -1,18 +1,26 @@
-import React from 'react';
+import React, {useContext} from 'react';
 // import  {Routes, Route, Navigate} from "react-router-dom";
 import {Routes, Route, Outlet, Link, json, Navigate} from "react-router-dom";
 import {authRoutes, publicRoutes} from "../routes";
 import {SHOP_ROUTE} from "../utils/consts";
 // import {Barnd} from "../models/";
 import Home from "../pages/Home";
+import {Context} from "../index";
 const AppRouter = (thisArg, ...argArray) => {
-    const isAuth = false
+    // const isAuth = false
+    const isAuth = true
+    const {user} = useContext(Context)
+    // console.log(user)
     return (
         <Routes>
-            {publicRoutes.map(({path, Component}) =>
-                <Route key={path} path={path} element={Component.call(undefined, undefined)}/>
+            {user.isAuth && authRoutes.map(({path, Component}) =>
+                <Route key={path} path={path} element={Component.call(undefined, undefined)} exact/>
             )}
-            <Route path="*" element={<NoMatch />} />
+            {publicRoutes.map(({path, Component}) =>
+                <Route key={path} path={path} element={Component.call(undefined, undefined)} exact/>
+            )}
+            <Route path='*' element={<Navigate to={SHOP_ROUTE}/>} />
+
         </Routes>
     );
 };
