@@ -5,20 +5,30 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-const NavBar = () => {
+import {NavLink} from "react-router-dom";
+import Shop from "../pages/Shop";
+import {SHOP_ROUTE} from "../utils/consts";
+import {Button} from "react-bootstrap";
+import {observer} from "mobx-react-lite"
+const NavBar = observer(() => {
     const {user} = useContext(Context)
     return (
-        <Navbar bg="light" variant="light">
+        <Navbar bg="dark" variant="dark">
             <Container>
-                <Navbar.Brand href="#home">Navbar</Navbar.Brand>
-                <Nav className="me-auto">
-                    <Nav.Link href="#home">Home</Nav.Link>
-                    <Nav.Link href="#features">Features</Nav.Link>
-                    <Nav.Link href="#pricing">Pricing</Nav.Link>
+                <NavLink style={{color:"white"}} to={SHOP_ROUTE}> Bike Shop </NavLink>
+                {user.isAuth ?
+                <Nav className="m-lg-auto" style={{color:"white"}}>
+                    <Button variant={"outline-light"}>  Exit </Button>
+                    <Button variant={"outline-light"}>  Admin panel </Button>
                 </Nav>
+                    :
+                <Nav className="m-lg-auto" style={{color:"white"}}>
+                    <Button variant={"outline-light"} onClick={() => user.setIsAuth(true)}>  Authorization </Button>
+                </Nav>
+                }
             </Container>
         </Navbar>
     );
-};
+})
 
 export default NavBar;
