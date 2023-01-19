@@ -1,11 +1,11 @@
 import React from 'react'
 import {BrowserRouter} from "react-router-dom";
 import AppRouter from "./components/AppRouther";
-// import NavBar from "./components/NavBar";
+import NavBar from "./components/NavBar";
 function App() {
   return (
     <BrowserRouter>
-        {/*<NavBar />*/}
+        <NavBar />
         <AppRouter />
       {/*WORKIN lll*/}
     </BrowserRouter>
