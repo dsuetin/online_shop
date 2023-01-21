@@ -1,10 +1,40 @@
 import React from 'react';
+// import Container from "react-bootstrap/Container";
+import {Button, Card, Form, NavLink, Container} from "react-bootstrap";
+import {REGISTRATION_ROUTE} from "../utils/consts";
 
 const Auth = () => {
     return (
-        <div>
-            Auth 67
-        </div>
+        <Container
+            className="d-flex justify-content-center align-items-center"
+            style={{height:window.innerHeight - 54}}
+        >
+            <Card style={{width: 600}} className="p-5">
+                <h2 className="m-auto"> Authorization </h2>
+                <Form className="d-flex flex-column">
+                    <Form.Control
+                        className="mt-4"
+                        placeholder="Enter your email"
+                    />
+                    <Form.Control
+                        className="mt-3"
+                        placeholder="Enter your password"
+                    />
+                </Form>
+                <Form className="d-flex justify-content-between mt-3 ">
+                    <div >
+                        Not registered yet? <NavLink to={REGISTRATION_ROUTE}>Registration</NavLink>
+                    </div>
+
+                    <Button
+                        variant={"outline-success"}
+                        className="mt-3">
+                        Sing In
+                    </Button>
+                </Form>
+
+            </Card>
+        </Container>
     );
 };
 

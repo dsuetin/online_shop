@@ -18,8 +18,10 @@ const NavBar = observer(() => {
                 <NavLink style={{color:"white"}} to={SHOP_ROUTE}> Bike Shop </NavLink>
                 {user.isAuth ?
                 <Nav className="m-lg-auto" style={{color:"white"}}>
-                    <Button variant={"outline-light"}>  Exit </Button>
-                    <Button variant={"outline-light"}>  Admin panel </Button>
+                    <Button variant={"outline-light"} >  Admin panel </Button>
+                    <div className="col-sm-1 col-xs-1 col-md-1 col-lg-1"></div>
+                    <Button variant={"outline-light"} className="p-xl-4">  Exit </Button>
+
                 </Nav>
                     :
                 <Nav className="m-lg-auto" style={{color:"white"}}>
