@@ -33,6 +33,7 @@ export default class DeviceStore {
                 img: "55469915-0071-446a-94c9-75df616ae4d9.jpg", typeId: 2, brandId: 2},
         ]
         this._selectedType = {}
+        this._selectedBrand = {}
         makeAutoObservable(this)
     }
     setTypes(types) {
@@ -47,6 +48,9 @@ export default class DeviceStore {
     setSelectedType(type) {
         this._selectedType = type
     }
+    setSelectedBrand(brand) {
+        this._selectedBrand = brand
+    }
     get types() {
         return this._types
     }
@@ -58,5 +62,8 @@ export default class DeviceStore {
     }
     get selectedType() {
         return this._selectedType
+    }
+    get selectedBrand() {
+        return this._selectedBrand
     }
 }

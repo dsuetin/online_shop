@@ -1,19 +1,20 @@
 import React from 'react';
 // import Container from "react-bootstrap/Container";
-import {Form, Container, Col} from "react-bootstrap";
+import {Form, Container, Col, Row} from "react-bootstrap";
 import TypeBar from "../components/TypeBar";
+import BrandBar from "../components/BrandBar";
 
 const Shop = () => {
     return (
         <Container>
-            <Form className="mt-2">
+            <Row className="mt-2">
                 <Col md={3} >
                     <TypeBar/>
                 </Col>
-                <Col md={9}>
-
+                <Col md={9} className="mt-2">
+                    <BrandBar/>
                 </Col>
-            </Form>
+            </Row>
 
         </Container>
     );
