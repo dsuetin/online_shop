@@ -1,9 +1,11 @@
 import React from 'react';
-// import Container from "react-bootstrap/Container";
-import {Button, Card, Form, NavLink, Container} from "react-bootstrap";
+import {Button, Card, Form,  Container} from "react-bootstrap";
+import {NavLink, useLocation} from "react-router-dom"
 import {REGISTRATION_ROUTE} from "../utils/consts";
 
 const Auth = () => {
+    const location = useLocation()
+    console.log(location)
     return (
         <Container
             className="d-flex justify-content-center align-items-center"
@@ -21,9 +23,9 @@ const Auth = () => {
                         placeholder="Enter your password"
                     />
                 </Form>
-                <Form className="d-flex justify-content-between mt-3 ">
+                <Form className="d-flex justify-content-between mt-3 pl-3 pr-3">
                     <div >
-                        Not registered yet? <NavLink to={REGISTRATION_ROUTE}>Registration</NavLink>
+                        Not registered yet?  <NavLink to={REGISTRATION_ROUTE}>Registration</NavLink>
                     </div>
 
                     <Button
