@@ -9,7 +9,6 @@ const Shop = () => {
     return (
         <Container>
 
-
             <Row className="mt-2">
                 <Col md={3} >
                     <TypeBar/>
@@ -21,15 +20,6 @@ const Shop = () => {
                 </Col>
 
             </Row>
-
-            {/*<Row className="mt-2">*/}
-            {/*    <Col md={3} >*/}
-            {/*        <TypeBar/>*/}
-            {/*    </Col>*/}
-            {/*    <Col md={9} className="mt-2">*/}
-            {/*        <BrandBar/>*/}
-            {/*    </Col>*/}
-            {/*</Row>*/}
 
         </Container>
     );
