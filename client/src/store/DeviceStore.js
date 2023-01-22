@@ -12,9 +12,12 @@ export default class DeviceStore {
         this._brands = [
             {id: 1, name: 'bufu'},
             {id: 2, name: 'gedonism'},
-            {id: 3, name: 'gedonism_la'}
+            {id: 3, name: 'gedonism_la'},
+            {id: 3, name: 'gedonism_la'},
+
+
         ]
-        this._device = [
+        this._devices = [
             {id: 1, name: '12 pro', price: 100000, rating: 0,
                 img: "55469915-0071-446a-94c9-75df616ae4d9.jpg", typeId: 2, brandId: 2},
             {id: 2, name: '12 pro4' , price: 100000, rating: 0,
@@ -28,6 +31,16 @@ export default class DeviceStore {
             {id: 6, name: '3fw' , price: 100000, rating: 0,
                 img: "55469915-0071-446a-94c9-75df616ae4d9.jpg", typeId: 2, brandId: 2},
             {id: 8, name: '3fwe' , price: 100000, rating: 0,
+                img: "55469915-0071-446a-94c9-75df616ae4d9.jpg", typeId: 2, brandId: 2},
+            {id: 9, name: '3fwer' , price: 100000, rating: 0,
+                img: "55469915-0071-446a-94c9-75df616ae4d9.jpg", typeId: 2, brandId: 2},
+            {id: 9, name: '3fwer' , price: 100000, rating: 0,
+                img: "55469915-0071-446a-94c9-75df616ae4d9.jpg", typeId: 2, brandId: 2},
+            {id: 9, name: '3fwer' , price: 100000, rating: 0,
+                img: "55469915-0071-446a-94c9-75df616ae4d9.jpg", typeId: 2, brandId: 2},
+            {id: 9, name: '3fwer' , price: 100000, rating: 0,
+                img: "55469915-0071-446a-94c9-75df616ae4d9.jpg", typeId: 2, brandId: 2},
+            {id: 9, name: '3fwer' , price: 100000, rating: 0,
                 img: "55469915-0071-446a-94c9-75df616ae4d9.jpg", typeId: 2, brandId: 2},
             {id: 9, name: '3fwer' , price: 100000, rating: 0,
                 img: "55469915-0071-446a-94c9-75df616ae4d9.jpg", typeId: 2, brandId: 2},
