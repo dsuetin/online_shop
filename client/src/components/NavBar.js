@@ -15,19 +15,26 @@ const NavBar = observer(() => {
     return (
         <Navbar bg="dark" variant="dark">
             <Container>
-                <NavLink style={{color:"white"}} to={SHOP_ROUTE}> Bike Shop </NavLink>
-                {user.isAuth ?
-                <Nav className="m-lg-auto" style={{color:"white"}}>
-                    <Button variant={"outline-light"} >  Admin panel </Button>
-                    <div className="col-sm-1 col-xs-1 col-md-1 col-lg-1"></div>
-                    <Button variant={"outline-light"} className="p-xl-4">  Exit </Button>
+                <Navbar.Brand>Gedonism</Navbar.Brand>
+                <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
+                <Navbar.Collapse id={"responsive-navbar-nav"}>
+                    {user.isAuth ?
+                        <Nav className="mr-auto" style={{color:"white"}}>
+                            <Button variant={"outline-light"} >  Admin panel </Button>
+                            <div className="col-sm-1 col-xs-1 col-md-1 col-lg-1"></div>
+                            <Button variant={"outline-light"} className="p-xl-4">  Exit </Button>
 
-                </Nav>
-                    :
-                <Nav className="m-lg-auto" style={{color:"white"}}>
-                    <Button variant={"outline-light"} onClick={() => user.setIsAuth(true)}>  Authorization </Button>
-                </Nav>
-                }
+                        </Nav>
+                        :
+                        <Nav className="m-lg-auto" style={{color:"white"}}>
+                            <Button variant={"outline-light"} onClick={() => user.setIsAuth(true)}>  Authorization </Button>
+                        </Nav>
+                    }
+                </Navbar.Collapse>
+
+
+                <NavLink style={{color:"white"}} to={SHOP_ROUTE}> Bike Shop </NavLink>
+
             </Container>
         </Navbar>
     );
