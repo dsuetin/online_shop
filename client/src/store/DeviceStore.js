@@ -13,17 +13,17 @@ export default class DeviceStore {
             {id: 1, name: 'bufu'},
             {id: 2, name: 'gedonism'},
             {id: 3, name: 'gedonism_la'},
-            {id: 3, name: 'gedonism_la'},
+            // {id: 3, name: 'gedonism_la'},
 
 
         ]
         this._devices = [
             {id: 1, name: '12 pro', price: 100000, rating: 0,
-                img: "55469915-0071-446a-94c9-75df616ae4d9.jpg", typeId: 2, brandId: 2},
+                img: "photo_2023-01-22_22-03-18.jpg", typeId: 2, brandId: 2},
             {id: 2, name: '12 pro4' , price: 100000, rating: 0,
-                img: "55469915-0071-446a-94c9-75df616ae4d9.jpg", typeId: 2, brandId: 2},
+                img: "комета.jpg", typeId: 2, brandId: 2},
             {id: 3, name: '12 pro4255' , price: 100000, rating: 0,
-                img: "55469915-0071-446a-94c9-75df616ae4d9.jpg", typeId: 2, brandId: 2},
+                img: "комета.jpg", typeId: 2, brandId: 2},
             {id: 4, name: '12 pro4255e' , price: 100000, rating: 0,
                 img: "55469915-0071-446a-94c9-75df616ae4d9.jpg", typeId: 2, brandId: 2},
             {id: 5, name: '3f' , price: 100000, rating: 0,

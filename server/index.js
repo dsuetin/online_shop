@@ -15,12 +15,21 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 app.use(express.static(path.resolve(__dirname, 'static')))
+app.get("/*", function(req, res) {
+    res.sendFile(path.join(__dirname, "index.html"));
+});
 app.use(fileUploads({}))
 app.use('/api', router)
 
-app.get('/', (req, res) => {
-    res.status(200).json({message: 'WORKING!!!'})
-})
+// app.get('/', (req, res) => {
+//     res.status(200).json({message: 'WORKING!!!'})
+// })
+
+// app.get('/*', function(req, res) => {
+//     res.sendFile(path.join(__dirname, "index.html"))
+// })
+
+
 app.use(errorHandler)
 const start = async () => {
     try {
