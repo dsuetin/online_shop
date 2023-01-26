@@ -5,13 +5,15 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import {NavLink} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 import Shop from "../pages/Shop";
-import {SHOP_ROUTE} from "../utils/consts";
+import {ADMIN_ROUTE, LOGIN_ROUTE, SHOP_ROUTE} from "../utils/consts";
 import {Button} from "react-bootstrap";
 import {observer} from "mobx-react-lite"
+
 const NavBar = observer(() => {
     const {user} = useContext(Context)
+    const navigation = useNavigate()
     return (
         <Navbar bg="dark" variant="dark">
             <Container>
@@ -20,9 +22,20 @@ const NavBar = observer(() => {
                 <Navbar.Collapse id={"responsive-navbar-nav"}>
                     {user.isAuth ?
                         <Nav className="mr-auto" style={{color:"white"}}>
-                            <Button variant={"outline-light"} >  Admin panel </Button>
+                            <Button
+                                variant={"outline-light"}
+                                onClick={() => navigation(ADMIN_ROUTE)}
+                            >
+                                Admin panel
+                            </Button>
                             <div className="col-sm-1 col-xs-1 col-md-1 col-lg-1"></div>
-                            <Button variant={"outline-light"} className="p-xl-4">  Exit </Button>
+                            <Button
+                                variant={"outline-light"}
+                                className="p-xl-4"
+                                onClick={() => navigation(LOGIN_ROUTE)}
+                            >
+                                Exit
+                            </Button>
 
                         </Nav>
                         :

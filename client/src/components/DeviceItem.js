@@ -18,6 +18,7 @@ const DeviceItem = ({device}) => {
                 {/*<Image width={150} height={150} src={my_url}/>*/}
                 {/*<Image width={150} height={150} src={new URL("../assets/bigStar.png", import.meta.url)}/>*/}
                 {/*<Image width={150} height={150} src={require('../assets/bigStar.png')}/>*/}
+                {/*<Image width={150} height={150} src={require(device.img)}/>*/}
                 <Image width={150} height={150} src={device.img}/>
 
                 {/*require('./thumbnail.webp')*/}
