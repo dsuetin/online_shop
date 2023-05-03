@@ -33,6 +33,10 @@ export default class DeviceStore {
     this._selectedType = type;
   }
 
+  setSelectedBrands(brands) {
+    this._selectedBrands = brands;
+  }
+
   setTypes(types) {
     this._types = types;
   }
@@ -49,7 +53,7 @@ export default class DeviceStore {
     return this._types;
   }
 
-  getBands() {
+  getBrands() {
     return this._brands;
   }
 
@@ -59,5 +63,9 @@ export default class DeviceStore {
 
   getSelectedType() {
     return this._selectedType;
+  }
+
+  getSelectedBrands() {
+    return this._selectedBrands;
   }
 }

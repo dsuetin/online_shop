@@ -1,29 +1,21 @@
-import React, {useContext} from 'react';
-import {observer} from "mobx-react-lite";
-import {Context} from "../index";
-import {Card, Col, Form, Row} from "react-bootstrap";
+import React, { useContext } from 'react';
+import { observer } from 'mobx-react-lite';
+import { Card, Col, Form, Row } from 'react-bootstrap';
+import { Context } from '../index';
 
-const BrandBar = observer( () => {
-    const {device} = useContext(Context)
-
-    return (
-        <Row className="d-flex">
-            {device.brands.map(brand =>
-                <Card
-                    md={4}
-                    // style={{cursor: 'pointer'}}
-                    style={{width:150, cursor: 'pointer'}}
-
-                    key={brand.id}
-                    className={"p-3 mt-2"}
-                    onClick={()=> device.setSelectedBrand(brand)}
-                    border={brand.id === device.selectedBrand.id ? 'danger' : 'light'}
-                >
-                    {brand.name}
-                </Card>
-            )}
-        </Row>
-    );
+const BrandBar = observer(() => {
+  const { device } = useContext(Context);
+  console.log('device', device.getBrands()[0].id, device.getBrands()[0].name);
+  return (
+    <Row className="d-flex">
+      {(device.getBrands().map((brand) => (
+        <Card>
+          { brand.name }
+        </Card>
+        // 'lalal'
+      )))}
+    </Row>
+  );
 });
 
 export default BrandBar;
