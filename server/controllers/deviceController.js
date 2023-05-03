@@ -6,12 +6,13 @@ const ApiError = require('../error/ApiError');
 class DeviceController {
     async create(req, res, next) {
         try {
-            let {name, price, brandId, typeId, info, bike_class} = req.body
+            // let {name, price, brandId, typeId, info, bike_class} = req.body
+            let {name, price, brandId, typeId, info} = req.body
             const {img} = req.files
             let fileName = uuid.v4() + ".jpg"
             await img.mv(path.resolve(__dirname, '..', 'static', fileName))
-            const device = await Device.create({name, price, brandId, typeId, img: fileName, bike_class});
-            // const device = await Device.create({name, price, brandId, typeId, img: fileName});
+            // const device = await Device.create({name, price, brandId, typeId, img: fileName, bike_class});
+            const device = await Device.create({name, price, brandId, typeId, img: fileName});
             // console.log("jajajdekfrj")
             // console.log(bike_class)
             if (info) {

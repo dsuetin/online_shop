@@ -1,25 +1,20 @@
-import React, {useContext} from 'react';
-// import  {Routes, Route, Navigate} from "react-router-dom";
-import {Routes, Route, Outlet, Link, json, Navigate} from "react-router-dom";
-import {authRoutes, publicRoutes} from "../routes";
-import {SHOP_ROUTE} from "../utils/consts";
-import {Context} from "../index";
-const AppRouter = (thisArg, ...argArray) => {
-    const {user, device} = useContext(Context)
-    console.log(user)
-    console.log(device)
-    return (
-        <Routes>
-            {user.isAuth && authRoutes.map(({path, Component}) =>
-                <Route key={path} path={path} element={Component.call(undefined, undefined)} exact/>
-            )}
-            {publicRoutes.map(({path, Component}) =>
-                <Route key={path} path={path} element={Component.call(undefined, undefined)} exact/>
-            )}
-            <Route path='*' element={<Navigate to={SHOP_ROUTE}/>} />
-        </Routes>
-    );
+import React, { Component, useContext } from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { authRoutes as aR, publicRoutes as pR } from '../routes';
+import { SHOP_ROUTE } from '../utils/consts';
+import { Context } from '../index';
+
+const AppRouther = () => {
+  const { user } = useContext(Context);
+  console.log(user);
+  return (
+    <Routes>
+      { user.getIsAuth()
+      && aR.map(({ path: p, Component: Cp }) => <Route key={p} path={p} element={<Cp />} exact />)}
+      { pR.map(({ path: p, Component: Cp }) => <Route key={p} path={p} element={<Cp />} exact />)}
+      <Route path="*" element={<Navigate to={SHOP_ROUTE} />} />
+    </Routes>
+  );
 };
 
-
-export default AppRouter;
+export default AppRouther;

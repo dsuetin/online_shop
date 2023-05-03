@@ -1,82 +1,63 @@
-import {makeAutoObservable} from "mobx";
+import { makeAutoObservable } from 'mobx';
+
 export default class DeviceStore {
-    constructor() {
-        this._types = [
-            {id: 1, name: 'Велосипеды'},
-            {id: 2, name: 'Рамы'},
-            {id: 3, name: 'Звезды'},
-            {id: 4, name: 'Колеса'},
-            {id: 6, name: 'Рули '},
-        ]
+  constructor() {
+    this._types = [
+      { id: 1, name: 'iPhone' },
+      { id: 2, name: 'iPad' },
+      { id: 3, name: 'Android' },
+      { id: 4, name: 'Windows Phone' },
+      { id: 5, name: 'Blackberry' },
+    ];
 
-        this._brands = [
-            {id: 1, name: 'bufu'},
-            {id: 2, name: 'gedonism'},
-            {id: 3, name: 'gedonism_la'},
-            // {id: 3, name: 'gedonism_la'},
+    this._brands = [
+      { id: 1, name: 'SAMSUNG' },
+      { id: 2, name: 'LG' },
+      { id: 3, name: 'HTC' },
+      { id: 4, name: 'Apple' },
+      { id: 5, name: 'Motorola' },
+      { id: 6, name: 'Nokia' },
+    ];
+    this._devices = [
+      { id: 1, name: 'iPhone', brand: 1, type: 1, price: 2500, rating: 4, img: 'client/public/logo512.png' },
+      { id: 2, name: 'iPad', brand: 2, type: 2, price: 3500, rating: 4, img: 'client/public/logo512.png' },
+      { id: 3, name: 'Android', brand: 3, type: 3, price: 4000, rating: 4, img: 'client/public/logo512.png' },
+      { id: 4, name: 'Windows Phone', brand: 4, type: 4, price: 3500, rating: 4, img: 'client/public/logo512.png' },
+      { id: 5, name: 'Blackberry', brand: 5, type: 5, price: 3500, rating: 4, img: 'client/public/logo512.png' },
+    ];
+    this._selectedType = {};
+    makeAutoObservable(this);
+  }
 
+  setSelectedType(type) {
+    this._selectedType = type;
+  }
 
-        ]
-        this._devices = [
-            {id: 1, name: '12 pro', price: 100000, rating: 0,
-                img: "photo_2023-01-22_22-03-18.jpg", typeId: 2, brandId: 2},
-            {id: 2, name: '12 pro4' , price: 100000, rating: 0,
-                img: "hshs.jpg", typeId: 2, brandId: 2},
-            {id: 3, name: '12 pro4255' , price: 100000, rating: 0,
-                img: "комета.jpg", typeId: 2, brandId: 2},
-            {id: 4, name: '12 pro4255e' , price: 100000, rating: 0,
-                img: "photo_2023-01-22_22-02-26.jpg", typeId: 2, brandId: 2},
-            {id: 5, name: '3f' , price: 100000, rating: 0,
-                img: "photo_2023-01-22_22-02-50.jpg", typeId: 2, brandId: 2},
-            {id: 6, name: '3fw' , price: 100000, rating: 0,
-                img: "photo_2023-01-22_22-03-05.jpg", typeId: 2, brandId: 2},
-            {id: 8, name: '3fwe' , price: 100000, rating: 0,
-                img: "photo_2023-01-22_22-03-14.jpg", typeId: 2, brandId: 2},
-            {id: 9, name: '3fwer' , price: 100000, rating: 0,
-                img: "photo_2023-01-22_22-03-18.jpg", typeId: 2, brandId: 2},
-            {id: 9, name: '3fwer' , price: 100000, rating: 0,
-                img: "photo_2023-01-22_22-03-22.jpg", typeId: 2, brandId: 2},
-            {id: 9, name: '3fwer' , price: 100000, rating: 0,
-                img: "55469915-0071-446a-94c9-75df616ae4d9.jpg", typeId: 2, brandId: 2},
-            {id: 9, name: '3fwer' , price: 100000, rating: 0,
-                img: "55469915-0071-446a-94c9-75df616ae4d9.jpg", typeId: 2, brandId: 2},
-            {id: 9, name: '3fwer' , price: 100000, rating: 0,
-                img: "55469915-0071-446a-94c9-75df616ae4d9.jpg", typeId: 2, brandId: 2},
-            {id: 9, name: '3fwer' , price: 100000, rating: 0,
-                img: "55469915-0071-446a-94c9-75df616ae4d9.jpg", typeId: 2, brandId: 2},
-        ]
-        this._selectedType = {}
-        this._selectedBrand = {}
-        makeAutoObservable(this)
-    }
-    setTypes(types) {
-        this._types = types
-    }
-    setBrands(brands) {
-        this._brands = brands
-    }
-    setDevices(devices) {
-        this._devices = devices
-    }
-    setSelectedType(type) {
-        this._selectedType = type
-    }
-    setSelectedBrand(brand) {
-        this._selectedBrand = brand
-    }
-    get types() {
-        return this._types
-    }
-    get brands() {
-        return this._brands
-    }
-    get devices() {
-        return this._devices
-    }
-    get selectedType() {
-        return this._selectedType
-    }
-    get selectedBrand() {
-        return this._selectedBrand
-    }
+  setTypes(types) {
+    this._types = types;
+  }
+
+  setBrands(brands) {
+    this._brands = brands;
+  }
+
+  setDeivces(devices) {
+    this._devices = devices;
+  }
+
+  getTypes() {
+    return this._types;
+  }
+
+  getBands() {
+    return this._brands;
+  }
+
+  getDeivces() {
+    return this._devices;
+  }
+
+  getSelectedType() {
+    return this._selectedType;
+  }
 }
