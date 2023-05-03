@@ -26,6 +26,7 @@ export default class DeviceStore {
       { id: 5, name: 'Blackberry', brand: 5, type: 5, price: 3500, rating: 4, img: 'client/public/logo512.png' },
     ];
     this._selectedType = {};
+    this._selectedBrand = {};
     makeAutoObservable(this);
   }
 
@@ -33,8 +34,10 @@ export default class DeviceStore {
     this._selectedType = type;
   }
 
-  setSelectedBrands(brands) {
-    this._selectedBrands = brands;
+  setSelectedBrand(brand) {
+    this._selectedBrand = brand;
+    console.log('setSelectedBrand', brand.id, brand.name, this._selectedBrand.id);
+    // this.getSelectedBrand();
   }
 
   setTypes(types) {
@@ -65,7 +68,10 @@ export default class DeviceStore {
     return this._selectedType;
   }
 
-  getSelectedBrands() {
-    return this._selectedBrands;
+  getSelectedBrand() {
+    // return (typeof this._selectedBrand === 'undefined' || this._selectedBrand === null)
+    // ? null : this._selectedBrand;
+    console.log('sss', this._selectedBrand);
+    return this._selectedBrand;
   }
 }
