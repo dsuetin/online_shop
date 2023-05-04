@@ -12,7 +12,7 @@ const AppRouther = () => {
       { user.getIsAuth()
       && aR.map(({ path: p, Component: Cp }) => <Route key={p} path={p} element={<Cp />} exact />)}
       { pR.map(({ path: p, Component: Cp }) => <Route key={p} path={p} element={<Cp />} exact />)}
-      <Route path="*" element={<Navigate to={SHOP_ROUTE} />} />
+      {/* <Route path="*" element={<Navigate to={SHOP_ROUTE} />} /> */}
     </Routes>
   );
 };
