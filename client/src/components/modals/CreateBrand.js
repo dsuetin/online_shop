@@ -17,9 +17,7 @@ const CreateBrand = (show, onHide) => (
       <Form>
         <Form.Control
           placeholder="Введите название бренда"
-        >
-          аккаунт
-        </Form.Control>
+        />
       </Form>
     </Modal.Body>
     <Modal.Footer>

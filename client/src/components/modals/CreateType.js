@@ -17,9 +17,7 @@ const CreateType = (show, onHide) => (
       <Form>
         <Form.Control
           placeholder="Введите название типа"
-        >
-          аккаунт
-        </Form.Control>
+        />
       </Form>
     </Modal.Body>
     <Modal.Footer>

@@ -18,9 +18,7 @@ function CreateDevice(show, onHide) {
         <Form>
           <Form.Control
             placeholder="Введите название устройства"
-          >
-            аккаунт
-          </Form.Control>
+          />
         </Form>
       </Modal.Body>
       <Modal.Footer>
