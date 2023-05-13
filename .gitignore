@@ -1,1 +1,8 @@
 node_modules/
+*.png
+.idea/
+*.idea/
+*.xml
+.idea/workspace.xml
+*.json
+*.jpg
