@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Container } from 'react-bootstrap';
 
-const Admin = () => {
+const Admin = () => (
   <Container
     className="d-flex flex-column"
   >
@@ -23,6 +23,6 @@ const Admin = () => {
     >
       Добавить устройство
     </Button>
-  </Container>;
-};
+  </Container>
+);
 export default Admin;
