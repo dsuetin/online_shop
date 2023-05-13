@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Container } from 'react-bootstrap';
+import CreateType from '../components/modals/CreateType';
 
 const Admin = () => (
   <Container
@@ -7,22 +8,23 @@ const Admin = () => (
   >
     <Button
       variant="outline-dark"
-      className="mt2"
+      className="mt-4 p-2"
     >
       Добавить тип
     </Button>
     <Button
       variant="outline-dark"
-      className="mt2"
+      className="mt-4 p-2"
     >
       Добавить бренд
     </Button>
     <Button
       variant="outline-dark"
-      className="mt2"
+      className="mt-4 p-2"
     >
       Добавить устройство
     </Button>
+    <CreateType show />
   </Container>
 );
 export default Admin;
