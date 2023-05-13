@@ -19,11 +19,13 @@ export default class DeviceStore {
       { id: 6, name: 'Nokia' },
     ];
     this._devices = [
-      { id: 1, name: 'iPhone', brand: 1, type: 1, price: 2500, rating: 4, img: 'client/public/logo512.png' },
-      { id: 2, name: 'iPad', brand: 2, type: 2, price: 3500, rating: 4, img: 'client/public/logo512.png' },
-      { id: 3, name: 'Android', brand: 3, type: 3, price: 4000, rating: 4, img: 'client/public/logo512.png' },
-      { id: 4, name: 'Windows Phone', brand: 4, type: 4, price: 3500, rating: 4, img: 'client/public/logo512.png' },
-      { id: 5, name: 'Blackberry', brand: 5, type: 5, price: 3500, rating: 4, img: 'client/public/logo512.png' },
+      { id: 1, name: 'barends', brand: 1, type: 1, price: 2500, rating: 4, img: '/barends.jpg' }, // path correcpond to /.../public/
+      { id: 2, name: 'bike blue', brand: 2, type: 2, price: 3500, rating: 5, img: '/bike_blue.jpg' },
+      { id: 3, name: 'bike frame black', brand: 3, type: 3, price: 4000, rating: 4, img: '/bike_frame_black.jpg' },
+      { id: 4, name: 'saddle black', brand: 4, type: 4, price: 3500, rating: 3, img: '/saddle_black.jpg' },
+      { id: 5, name: 'hui', brand: 5, type: 5, price: 3500, rating: 5, img: '/hui.jpg' },
+      { id: 6, name: 'hz', brand: 1, type: 2, price: 1204, rating: 2, img: '/hz.png' },
+      { id: 7, name: 'logo', brand: 1, type: 2, price: 1204, rating: 2, img: '/logo512.png' },
     ];
     this._selectedType = {};
     this._selectedBrand = {};
