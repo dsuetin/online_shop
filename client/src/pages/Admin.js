@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Button, Container } from 'react-bootstrap';
 import CreateType from '../components/modals/CreateType';
+import CreateBrand from '../components/modals/CreateBrand';
+import CreateDevice from '../components/modals/CreateDevice';
 
 const Admin = () => {
   const [typeVisible, setTypeVisible] = useState(false);
@@ -31,8 +33,8 @@ const Admin = () => {
         Добавить устройство
       </Button>
       <CreateType show={typeVisible} onHide={() => setTypeVisible(false)} />
-      <CreateType show={brandVisible} onHide={() => setBrandVisible(false)} />
-      <CreateType show={diviceVisible} onHide={() => setDeviceVisible(false)} />
+      <CreateBrand show={brandVisible} onHide={() => setBrandVisible(false)} />
+      <CreateDevice show={diviceVisible} onHide={() => setDeviceVisible(false)} />
     </Container>
   );
 };
