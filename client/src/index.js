@@ -6,19 +6,22 @@ import reportWebVitals from './reportWebVitals';
 import UserStore from './store/UserStore';
 import DeviceStore from './store/DeviceStore';
 
-export const Context = createContext(null);
+// require('dotenv').config({ path: require('find-config')('.env') });
 
+export const Context = createContext(null);
+console.log('9999999', process.env.REACT_APP_API_URL);
+console.log('999999977777777', process.env.REACT_APP_API_URL);
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <Context.Provider value={{ user: new UserStore(), device: new DeviceStore() }}>
+  <Context.Provider value={{
+    user: new UserStore(),
+    device: new DeviceStore(),
+  }}
+  >
     <App />
     {/* , */}
   </Context.Provider>,
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-// reportWebVitals(console.log)
 reportWebVitals(console.log);
 export default root;

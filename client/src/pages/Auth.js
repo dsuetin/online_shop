@@ -1,6 +1,7 @@
 // import React, { useContext, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import React, { useState } from 'react';
+
 // import Container from 'react-bootstrap/esm/Container';
 import { Container, Card, Form, Row, Button } from 'react-bootstrap';
 // import { Form } from 'react-router-dom';
@@ -9,6 +10,7 @@ import { Container, Card, Form, Row, Button } from 'react-bootstrap';
 
 // import { useLocation } from 'react-router-dom';
 import { LOGIN_ROUTE, REGISTRATION_ROUTE, SHOP_ROUTE } from '../utils/consts';
+import { login, registration } from '../http/userAPI';
 // // const email = '';
 // // const { user } = useContext(Context);
 // const location = useLocation();
@@ -24,11 +26,24 @@ const location = () => {
   return (pathname);
 };
 
-// const isLogin = () => (pathname === LOGIN_ROUTE);
 const isLogin = () => (location() === LOGIN_ROUTE);
-// const isLogin = (location() === LOGIN_ROUTE); // с этим вариантом по чему то ломается
+
+const click = async () => {
+  if (isLogin) {
+    const responce = await login();
+  } else {
+    const responce = await registration();
+    console.log('efrgtrhwg5y', responce);
+  }
+};
+
+// const [email, setEmail] = useState('');
+// const [password, setPassword] = useState('');
+
+// const [diviceVisible, setDeviceVisible] = useState(false);
 
 const Auth = () => (
+  // const [brandVisible, setBrandVisible] = useState(false);
   <Container
     className="d-flex justify-content-center align-items-center"
     style={{ heigth: window.innerHeight - 540 }}
@@ -41,7 +56,7 @@ const Auth = () => (
           className="mt-3"
           placeholder="Введите ваш email"
           // value={email}
-          // onChange={e => setEmail(e.target.value)}
+          // onChange={(e) => setEmail(e.target.value)}
         />
         <Form.Control
           className="mt-3"
@@ -61,6 +76,7 @@ const Auth = () => (
             : (
               <div>
                 Есть аккаунт?
+                {' '}
                 <NavLink to={LOGIN_ROUTE}>Войдите!</NavLink>
               </div>
             )}
