@@ -1,4 +1,6 @@
-require('dotenv').config()
+// require('dotenv').config()
+// require('find-config')
+require('dotenv').config({ path: require('find-config')('.env') })
 const express = require('express')
 const sequelize = require('./db')
 const {callback} = require("pg/lib/native/query");
