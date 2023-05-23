@@ -1,5 +1,5 @@
 // import React, { useContext, useState } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import React, { useState, useContext } from 'react';
 import { observer } from 'mobx-react-lite';
 // import Container from 'react-bootstrap/esm/Container';
@@ -7,10 +7,10 @@ import { Container, Card, Form, Row, Button } from 'react-bootstrap';
 // import { Form } from 'react-router-dom';
 // import { useLocation, useNavigate } from 'react-router-dom';
 import { Context } from '../index';
-
 // import { useLocation } from 'react-router-dom';
 import { LOGIN_ROUTE, REGISTRATION_ROUTE, SHOP_ROUTE } from '../utils/consts';
 import { login, registration, check } from '../http/userAPI';
+
 // // const email = '';
 // // const { user } = useContext(Context);
 // const location = useLocation();
@@ -28,6 +28,7 @@ const Auth = observer(() => {
   console.log('aaauuuthhhhhh', user);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigation = useNavigate();
   // const location = () => {
   //   const { pathname } = useLocation();
   //   return (pathname);
@@ -36,21 +37,27 @@ const Auth = observer(() => {
   const location = useLocation();
   const isLogin = location.pathname === LOGIN_ROUTE;
   const click = async (email, password) => {
-    let UserData;
-    console.log('click action');
-    if (isLogin) {
-      // console.log('click 5', email, password);
-      const UserData = await login(email, password);
-      console.log('login response', UserData);
-      // const response = await login();
-      // const response = await check();
-    } else {
-      const UserData = await registration(email, password);
-      console.log('registration response', UserData);
+    try {
+      let UserData;
+      console.log('click action');
+      if (isLogin) {
+        // console.log('click 5', email, password);
+        const UserData = await login(email, password);
+        console.log('login response', UserData);
+        // const response = await login();
+        // const response = await check();
+      } else {
+        const UserData = await registration(email, password);
+        console.log('registration response', UserData);
+      }
+      user.setUser(user);
+      user.setIsAuth(true);
+      console.log('hahahaha', user.getUser().getIsAuth());
+      navigation(SHOP_ROUTE);
+    } catch (e) {
+      console.log(e);
+      alert(e.response.data.message);
     }
-    user.setUser(user);
-    user.setIsAuth(true);
-    console.log('hahahaha', user.getUser().getIsAuth());
   };
   return (
     <Container
