@@ -34,15 +34,16 @@ const Auth = () => {
   const location = useLocation();
   const isLogin = location.pathname === LOGIN_ROUTE;
   const click = async (email, password) => {
-    console.log('click 3');
+    console.log('click action');
     if (isLogin) {
-      console.log('click 5', email, password);
+      // console.log('click 5', email, password);
       const response = await login(email, password);
+      console.log('login response', response);
       // const response = await login();
       // const response = await check();
     } else {
       const response = await registration(email, password);
-      console.log('efrgtrhwg5y', response);
+      console.log('registration response', response);
     }
   };
   return (
