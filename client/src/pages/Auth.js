@@ -10,39 +10,41 @@ import { Container, Card, Form, Row, Button } from 'react-bootstrap';
 
 // import { useLocation } from 'react-router-dom';
 import { LOGIN_ROUTE, REGISTRATION_ROUTE, SHOP_ROUTE } from '../utils/consts';
-import { login, registration } from '../http/userAPI';
+import { login, registration, check } from '../http/userAPI';
 // // const email = '';
 // // const { user } = useContext(Context);
 // const location = useLocation();
 // const navigation = useNavigate();
 // const isLogin = true; // = location.pathname === LOGIN_ROUTE
-// const [email, setEmail] = useState('');
-// const [password, setPassword] = useState('');
 
 // const { pathname } = useLocation();
-
-const location = () => {
-  const { pathname } = useLocation();
-  return (pathname);
-};
-
-const isLogin = () => (location() === LOGIN_ROUTE);
-
-const click = async () => {
-  if (isLogin) {
-    const responce = await login();
-  } else {
-    const responce = await registration();
-    console.log('efrgtrhwg5y', responce);
-  }
-};
 
 // const [email, setEmail] = useState('');
 // const [password, setPassword] = useState('');
 
 // const [diviceVisible, setDeviceVisible] = useState(false);
 const Auth = () => {
-  const [brandVisible, setBrandVisible] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  // const location = () => {
+  //   const { pathname } = useLocation();
+  //   return (pathname);
+  // };
+  // const isLogin = () => (location() === LOGIN_ROUTE);
+  const location = useLocation();
+  const isLogin = location.pathname === LOGIN_ROUTE;
+  const click = async (email, password) => {
+    console.log('click 3');
+    if (isLogin) {
+      console.log('click 5', email, password);
+      const response = await login(email, password);
+      // const response = await login();
+      // const response = await check();
+    } else {
+      const response = await registration(email, password);
+      console.log('efrgtrhwg5y', response);
+    }
+  };
   return (
     <Container
       className="d-flex justify-content-center align-items-center"
@@ -55,18 +57,18 @@ const Auth = () => {
           <Form.Control
             className="mt-3"
             placeholder="Введите ваш email"
-            // value={email}
-            // onChange={(e) => setEmail(e.target.value)}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
           <Form.Control
             className="mt-3"
             placeholder="Введите ваш пароль"
-            // value={password}
-            // onChange={(e) => setPassword(e.target.value)}
-            // type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            type="password"
           />
           <Row className="d-flex justify-content-between mt-3 pl-3 pr-3">
-            {isLogin()
+            {isLogin
               ? (
                 <div>
                   Нет аккаунта?
@@ -83,9 +85,9 @@ const Auth = () => {
             <Button
               variant="outline-success"
               className="mt-3 align-self-end"
-              // onClick={click}
+              onClick={() => click(email, password)}
             >
-              {isLogin() ? 'Войти' : 'Регистрация'}
+              {isLogin ? 'Войти' : 'Регистрация'}
             </Button>
           </Row>
 
