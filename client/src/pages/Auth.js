@@ -1,12 +1,12 @@
 // import React, { useContext, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import React, { useState } from 'react';
-
+import React, { useState, useContext } from 'react';
+import { observer } from 'mobx-react-lite';
 // import Container from 'react-bootstrap/esm/Container';
 import { Container, Card, Form, Row, Button } from 'react-bootstrap';
 // import { Form } from 'react-router-dom';
 // import { useLocation, useNavigate } from 'react-router-dom';
-// // import { Context } from '../index';
+import { Context } from '../index';
 
 // import { useLocation } from 'react-router-dom';
 import { LOGIN_ROUTE, REGISTRATION_ROUTE, SHOP_ROUTE } from '../utils/consts';
@@ -23,7 +23,9 @@ import { login, registration, check } from '../http/userAPI';
 // const [password, setPassword] = useState('');
 
 // const [diviceVisible, setDeviceVisible] = useState(false);
-const Auth = () => {
+const Auth = observer(() => {
+  const { user } = useContext(Context);
+  console.log('aaauuuthhhhhh', user);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   // const location = () => {
@@ -34,17 +36,21 @@ const Auth = () => {
   const location = useLocation();
   const isLogin = location.pathname === LOGIN_ROUTE;
   const click = async (email, password) => {
+    let UserData;
     console.log('click action');
     if (isLogin) {
       // console.log('click 5', email, password);
-      const response = await login(email, password);
-      console.log('login response', response);
+      const UserData = await login(email, password);
+      console.log('login response', UserData);
       // const response = await login();
       // const response = await check();
     } else {
-      const response = await registration(email, password);
-      console.log('registration response', response);
+      const UserData = await registration(email, password);
+      console.log('registration response', UserData);
     }
+    user.setUser(user);
+    user.setIsAuth(true);
+    console.log('hahahaha', user.getUser().getIsAuth());
   };
   return (
     <Container
@@ -96,6 +102,5 @@ const Auth = () => {
       </Card>
     </Container>
   );
-};
-
+});
 export default Auth;
