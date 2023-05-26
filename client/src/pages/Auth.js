@@ -25,34 +25,25 @@ import { login, registration, check } from '../http/userAPI';
 // const [diviceVisible, setDeviceVisible] = useState(false);
 const Auth = observer(() => {
   const { user } = useContext(Context);
-  console.log('aaauuuthhhhhh', user);
+  console.log('aaauuuthhhhhh user', user);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigation = useNavigate();
-  // const location = () => {
-  //   const { pathname } = useLocation();
-  //   return (pathname);
-  // };
-  // const isLogin = () => (location() === LOGIN_ROUTE);
   const location = useLocation();
   const isLogin = location.pathname === LOGIN_ROUTE;
   const click = async (email, password) => {
     try {
-      let UserData;
       console.log('click action');
       if (isLogin) {
-        // console.log('click 5', email, password);
         const UserData = await login(email, password);
         console.log('login response', UserData);
-        // const response = await login();
-        // const response = await check();
       } else {
         const UserData = await registration(email, password);
         console.log('registration response', UserData);
       }
       user.setUser(user);
       user.setIsAuth(true);
-      console.log('hahahaha', user.getUser().getIsAuth());
+      console.log('user.getUser().getIsAuth()', user.getUser().getIsAuth());
       navigation(SHOP_ROUTE);
     } catch (e) {
       console.log(e);
