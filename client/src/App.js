@@ -1,6 +1,7 @@
 import React, { Component, useContext, useState, useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { Spinner } from 'react-bootstrap';
 import AppRouther from './components/AppRouther';
 import NavBar from './components/NavBar';
 import { Context } from './index';
@@ -20,14 +21,10 @@ const App = observer(() => {
     }).finally(() => setLoading(false));
   }, []); // пустой массив - массив зависимостей
 
-  // const [email, setEmail] = useState('');
-  // const [password, setPassword] = useState('');
-  // const navigation = useNavigate();
-  // const location = () => {
-  //   const { pathname } = useLocation();
-  //   return (pathname);
-  // };
-  // const isLogin = () => (location() === LOGIN_ROUTE);
+  if (loading) {
+    return <Spinner animation="grow" />;
+  }
+
   return (
     <Router>
       <NavBar />
