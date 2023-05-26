@@ -28,6 +28,7 @@
         // "tab_size": 2,
         "translate_tabs_to_spaces": "off",
         "react/prop-types": "off",
+        "arrow-body-style": ["error", "always"],
         "import/no-extraneous-dependencies": [
             "error",
             {
