@@ -1,9 +1,11 @@
 import React from 'react';
 
-const Basket = () => (
-  <div>
-    Basket
-  </div>
-);
+const Basket = () => {
+  return (
+    <div>
+      Basket
+    </div>
+  );
+};
 
 export default Basket;

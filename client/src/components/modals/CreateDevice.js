@@ -11,7 +11,7 @@ function CreateDevice({ show, onHide }) {
   };
 
   const removeInfo = (number) => {
-    setInfo(info.filter((i) => (i.number !== number)));
+    setInfo(info.filter((i) => { return (i.number !== number); }));
   };
 
   console.log('device', device.getTypes()[0].id);
@@ -33,17 +33,21 @@ function CreateDevice({ show, onHide }) {
           <Dropdown className="mt-2 mb-2">
             <Dropdown.Toggle>Выберете тип</Dropdown.Toggle>
             <Dropdown.Menu>
-              {device.getTypes().map((type) => (
-                <Dropdown.Item key={type.id}>{type.name}</Dropdown.Item>
-              ))}
+              {device.getTypes().map((type) => {
+                return (
+                  <Dropdown.Item key={type.id}>{type.name}</Dropdown.Item>
+                );
+              })}
             </Dropdown.Menu>
           </Dropdown>
           <Dropdown className="mt-2 mb-2">
             <Dropdown.Toggle>Выберете брэнд</Dropdown.Toggle>
             <Dropdown.Menu>
-              {device.getBrands().map((brand) => (
-                <Dropdown.Item key={brand.id}>{brand.name}</Dropdown.Item>
-              ))}
+              {device.getBrands().map((brand) => {
+                return (
+                  <Dropdown.Item key={brand.id}>{brand.name}</Dropdown.Item>
+                );
+              })}
             </Dropdown.Menu>
           </Dropdown>
           <Form.Control
@@ -67,28 +71,30 @@ function CreateDevice({ show, onHide }) {
           >
             Добавить новое свойство
           </Button>
-          {info.map((i) => (
-            <Row className="mt-4" key={i.number}>
-              <Col md={4}>
-                <Form.Control
-                  placeholder="Введите название свойства"
-                />
-              </Col>
-              <Col md={4}>
-                <Form.Control
-                  placeholder="Введите описание свойства"
-                />
-              </Col>
-              <Col md={4}>
-                <Button
-                  variant="outline-danger"
-                  onClick={() => removeInfo(i.number)}
-                >
-                  Удалить
-                </Button>
-              </Col>
-            </Row>
-          ))}
+          {info.map((i) => {
+            return (
+              <Row className="mt-4" key={i.number}>
+                <Col md={4}>
+                  <Form.Control
+                    placeholder="Введите название свойства"
+                  />
+                </Col>
+                <Col md={4}>
+                  <Form.Control
+                    placeholder="Введите описание свойства"
+                  />
+                </Col>
+                <Col md={4}>
+                  <Button
+                    variant="outline-danger"
+                    onClick={() => { return removeInfo(i.number); }}
+                  >
+                    Удалить
+                  </Button>
+                </Col>
+              </Row>
+            );
+          })}
         </Form>
       </Modal.Body>
       <Modal.Footer>

@@ -42,14 +42,14 @@ const NavBar = observer(() => {
               <Col>
                 <Button
                   variant="outline-light"
-                  onClick={() => navigation(ADMIN_ROUTE)}
+                  onClick={() => { return navigation(ADMIN_ROUTE); }}
                 >
                   Admin panel
                 </Button>
                 {' '}
                 <Button
                   variant="outline-light"
-                  onClick={() => logOut()}
+                  onClick={() => { return logOut(); }}
                   className="ml-2"
                 >
                   Exit
@@ -83,7 +83,7 @@ const NavBar = observer(() => {
             >
               <Button
                 variant="outline-light"
-                onClick={() => navigation(LOGIN_ROUTE)}
+                onClick={() => { return navigation(LOGIN_ROUTE); }}
               >
                 Authorization
               </Button>

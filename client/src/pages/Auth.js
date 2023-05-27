@@ -63,13 +63,13 @@ const Auth = observer(() => {
             className="mt-3"
             placeholder="Введите ваш email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => { return setEmail(e.target.value); }}
           />
           <Form.Control
             className="mt-3"
             placeholder="Введите ваш пароль"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => { return setPassword(e.target.value); }}
             type="password"
           />
           <Row className="d-flex justify-content-between mt-3 pl-3 pr-3">
@@ -90,7 +90,7 @@ const Auth = observer(() => {
             <Button
               variant="outline-success"
               className="mt-3 align-self-end"
-              onClick={() => click(email, password)}
+              onClick={() => { return click(email, password); }}
             >
               {isLogin ? 'Войти' : 'Регистрация'}
             </Button>

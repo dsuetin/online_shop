@@ -14,27 +14,27 @@ const Admin = () => {
       <Button
         variant="outline-dark"
         className="mt-4 p-2"
-        onClick={() => setTypeVisible(true)}
+        onClick={() => { return setTypeVisible(true); }}
       >
         Добавить тип
       </Button>
       <Button
         variant="outline-dark"
         className="mt-4 p-2"
-        onClick={() => setBrandVisible(true)}
+        onClick={() => { return setBrandVisible(true); }}
       >
         Добавить бренд
       </Button>
       <Button
         variant="outline-dark"
         className="mt-4 p-2"
-        onClick={() => setDeviceVisible(true)}
+        onClick={() => { return setDeviceVisible(true); }}
       >
         Добавить устройство
       </Button>
-      <CreateType show={typeVisible} onHide={() => setTypeVisible(false)} />
-      <CreateBrand show={brandVisible} onHide={() => setBrandVisible(false)} />
-      <CreateDevice show={diviceVisible} onHide={() => setDeviceVisible(false)} />
+      <CreateType show={typeVisible} onHide={() => { return setTypeVisible(false); }} />
+      <CreateBrand show={brandVisible} onHide={() => { return setBrandVisible(false); }} />
+      <CreateDevice show={diviceVisible} onHide={() => { return setDeviceVisible(false); }} />
     </Container>
   );
 };

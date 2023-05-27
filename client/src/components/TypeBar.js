@@ -8,16 +8,18 @@ const TypeBar = observer(() => {
   // console.log('device', device.getBrands()[0].id, device.getBrands()[0].name);
   return (
     <ListGroup>
-      {device.getTypes().map((type) => (
-        <ListGroup.Item
-          style={{ cursor: 'pointer' }}
-          active={type.id === device.getSelectedType().id}
-          onClick={() => device.setSelectedType(type)}
-          key={type.id}
-        >
-          { type.name }
-        </ListGroup.Item>
-      ))}
+      {device.getTypes().map((type) => {
+        return (
+          <ListGroup.Item
+            style={{ cursor: 'pointer' }}
+            active={type.id === device.getSelectedType().id}
+            onClick={() => { return device.setSelectedType(type); }}
+            key={type.id}
+          >
+            { type.name }
+          </ListGroup.Item>
+        );
+      })}
     </ListGroup>
   );
 });

@@ -9,18 +9,20 @@ const BrandBar = observer(() => {
   // console.log('jjjj', device.getSelectedBrand());
   return (
     <Form className="w-100">
-      {(device.getBrands().map((brand) => (
-        <Card
-          md={4}
-          style={{ cursor: 'pointer' }}
-          key={brand.id}
-          className="p-3 mt-2 d-inline-block"
-          onClick={() => device.setSelectedBrand(brand)}
-          border={brand.id === device.getSelectedBrand().id ? 'danger' : 'light'}
-        >
-          { brand.name }
-        </Card>
-      )))}
+      {(device.getBrands().map((brand) => {
+        return (
+          <Card
+            md={4}
+            style={{ cursor: 'pointer' }}
+            key={brand.id}
+            className="p-3 mt-2 d-inline-block"
+            onClick={() => { return device.setSelectedBrand(brand); }}
+            border={brand.id === device.getSelectedBrand().id ? 'danger' : 'light'}
+          >
+            { brand.name }
+          </Card>
+        );
+      }))}
     </Form>
   );
 });

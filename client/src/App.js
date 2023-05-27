@@ -18,7 +18,7 @@ const App = observer(() => {
       user.setUser(user); // в оригинальном коде user.setUser(true);
       // но это бессмыслица какая то, user не булева переменная
       user.setIsAuth(true);
-    }).finally(() => setLoading(false));
+    }).finally(() => { return setLoading(false); });
   }, []); // пустой массив - массив зависимостей
 
   if (loading) {
