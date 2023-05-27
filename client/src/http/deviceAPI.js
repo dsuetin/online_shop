@@ -1,9 +1,13 @@
 import { $authHost, $host } from './index';
 
-export const CreateType = async (type) => {
-  const { data } = await $authHost.post('api/type', { type });
-  console.log('CreateType', data);
-  return data;
+export const createType = async (type) => {
+  console.log('CreateType555', type);
+  const typeName = type.value;
+  console.log('354637', typeName);
+  // const { data } = await $authHost.post('api/type', { type });
+  const { typeData } = await $authHost.post('api/type', { name: typeName });
+  // console.log('CreateType', data);
+  return typeData;
 };
 
 export const fetchTypes = async () => {
@@ -12,7 +16,7 @@ export const fetchTypes = async () => {
   return data;
 };
 
-export const CreateBrand = async (brand) => {
+export const createBrand = async (brand) => {
   const { data } = await $authHost.post('api/brand', { brand });
   console.log('CreateBrand', data);
   return data;
@@ -24,7 +28,7 @@ export const fetchBrands = async () => {
   return data;
 };
 
-export const CreateDevice = async (device) => {
+export const createDevice = async (device) => {
   const { data } = await $authHost.post('api/device', { device });
   console.log('CreateDevice', data);
   return data;
@@ -37,7 +41,7 @@ export const fetchDevices = async () => {
 };
 
 export const fetchOneDevice = async (DeviceId) => {
-  const { data } = await $host.get(`api/device${DeviceId}`);
+  const { data } = await $host.get(`api/device/${DeviceId}`);
   console.log('fetchDevices', data);
   return data;
 };

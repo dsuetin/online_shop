@@ -6,19 +6,19 @@ import { DEVICE_ROUTE } from '../utils/consts';
 
 const DeviceItem = ({ device }) => {
   const navigate = useNavigate();
-  // console.log(navigate)
-  console.log('66666666666666', device.img);
   const myUrl = new URL(device.img, import.meta.url);
   console.log('lalalalala', `${DEVICE_ROUTE}/${device.id}`);
-  console.log('kkkkkkkkkk', device.img);
-  console.log('oooooooooo', star);
-
+  console.log('device.img', device.img);
+  console.log('star', star);
+  console.log('ssss', `/device/${device.id}`);
+  console.log('llll', `${process.env.REACT_APP_API_URL}/device/${device.id}`);
   return (
-    // <Col md={3} className="mt-3" onClick={() => navigate(DEVICE_ROUTE + '/' + device.id)}>
-    // <Col md={3} className="mt-3" onClick={() => navigate(`${DEVICE_ROUTE}/${device.id}`)}>
-    <Col md={3} className="mt-3" onClick={() => navigate(`/device/${device.id}`)}>
+    <Col md={3} className="mt-3" onClick={() => { return navigate(`/device/${device.id}`); }}>
+      {/* <Col md={3} className="mt-3" onClick={() =>
+      { return navigate(`${process.env.REACT_APP_API_URL}/device/${device.id}`); }}> */}
       <Card style={{ width: 150, cursor: 'pointer' }} border="light">
-        <Image width={150} height={150} src={device.img} />
+        {/* <Image width={150} height={150} src={device.img} /> */}
+        <Image width={150} height={150} src={`${process.env.REACT_APP_API_URL}/${device.img}`} />
         <div className="text-black-50 mt-1 d-flex justify-content-between align-items-center">
           <div>SAd</div>
           <div className="d-flex align-items-center">
