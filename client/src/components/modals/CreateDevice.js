@@ -5,13 +5,21 @@ import { Context } from '../../index';
 function CreateDevice({ show, onHide }) {
   const { user, device } = useContext(Context);
   const [info, setInfo] = useState([]);
-
+  const [name, setName] = useState('');
+  const [price, setPrice] = useState(0);
+  const [file, setFile] = useState(null);
+  const [type, setType] = useState(null);
+  const [brand, setBrand] = useState(null);
   const addInfo = () => {
     setInfo([...info, { title: '', description: '', number: Date.now() }]);
   };
 
   const removeInfo = (number) => {
     setInfo(info.filter((i) => { return (i.number !== number); }));
+  };
+
+  const selectFile = (e) => {
+    setFile(e.target.files[0]);
   };
 
   console.log('device', device.getTypes()[0].id);
@@ -31,30 +39,44 @@ function CreateDevice({ show, onHide }) {
       <Modal.Body>
         <Form>
           <Dropdown className="mt-2 mb-2">
-            <Dropdown.Toggle>Выберете тип</Dropdown.Toggle>
+            <Dropdown.Toggle>{ device.getSelectedType().name || 'Выберете тип' }</Dropdown.Toggle>
             <Dropdown.Menu>
               {device.getTypes().map((type) => {
                 return (
-                  <Dropdown.Item key={type.id}>{type.name}</Dropdown.Item>
+                  <Dropdown.Item
+                    onClick={() => { return (device.setSelectedType(type)); }}
+                    key={type.id}
+                  >
+                    {type.name}
+                  </Dropdown.Item>
                 );
               })}
             </Dropdown.Menu>
           </Dropdown>
           <Dropdown className="mt-2 mb-2">
-            <Dropdown.Toggle>Выберете брэнд</Dropdown.Toggle>
+            <Dropdown.Toggle>{ device.getSelectedBrand().name || 'Выберете брэнд' }</Dropdown.Toggle>
             <Dropdown.Menu>
               {device.getBrands().map((brand) => {
                 return (
-                  <Dropdown.Item key={brand.id}>{brand.name}</Dropdown.Item>
+                  <Dropdown.Item
+                    onClick={() => { return (device.setSelectedBrand(brand)); }}
+                    key={brand.id}
+                  >
+                    {brand.name}
+                  </Dropdown.Item>
                 );
               })}
             </Dropdown.Menu>
           </Dropdown>
           <Form.Control
+            value={name}
+            onChange={(e) => { return setName(e.target.value); }}
             className="mt-3"
             placeholder="Введите название устройства"
           />
           <Form.Control
+            value={price}
+            onChange={(e) => { return setPrice(Number(e.target.value)); }}
             className="mt-3"
             placeholder="Введите стоимость устройства"
             type="number"
@@ -63,6 +85,7 @@ function CreateDevice({ show, onHide }) {
             className="mt-3"
             placeholder="Введите название устройства"
             type="file"
+            onChange={selectFile}
           />
           <hr />
           <Button

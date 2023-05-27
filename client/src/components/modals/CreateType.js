@@ -7,7 +7,7 @@ const CreateType = ({ show, onHide }) => {
   const addType = () => {
     console.log('CreateType', value);
     createType({ value }).then((inputData) => { return setValue(''); });
-    // onHide();
+    onHide();
   };
   return (
     <Modal
