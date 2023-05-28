@@ -4,6 +4,7 @@ import { observer } from 'mobx-react-lite';
 import TypeBar from '../components/TypeBar';
 import BrandBar from '../components/BrandBar';
 import DeviceList from '../components/DeviceList';
+import Pages from '../components/Pages';
 import { Context } from '../index';
 import { fetchTypes, fetchBrands, fetchDevices } from '../http/deviceAPI';
 
@@ -25,6 +26,7 @@ const Shop = observer(() => {
         <Col md={9} className="mt-2">
           <BrandBar />
           <DeviceList />
+          <Pages />
         </Col>
       </Row>
     </Container>
