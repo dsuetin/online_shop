@@ -1,15 +1,19 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
+import { observer } from 'mobx-react-lite';
 import { Modal, Button, Form, Dropdown, Row, Col } from 'react-bootstrap';
 import { Context } from '../../index';
+import { fetchTypes, fetchBrands, fetchDevices } from '../../http/deviceAPI';
 
-function CreateDevice({ show, onHide }) {
+const CreateDevice = observer(({ show, onHide }) => {
   const { user, device } = useContext(Context);
   const [info, setInfo] = useState([]);
   const [name, setName] = useState('');
   const [price, setPrice] = useState(0);
   const [file, setFile] = useState(null);
-  const [type, setType] = useState(null);
-  const [brand, setBrand] = useState(null);
+  useEffect(() => {
+    fetchTypes().then((typesData) => { return device.setTypes(typesData); });
+    fetchBrands().then((brandsData) => { return device.setBrands(brandsData); });
+  }, []);
   const addInfo = () => {
     setInfo([...info, { title: '', description: '', number: Date.now() }]);
   };
@@ -126,6 +130,6 @@ function CreateDevice({ show, onHide }) {
       </Modal.Footer>
     </Modal>
   );
-}
+});
 
 export default CreateDevice;
