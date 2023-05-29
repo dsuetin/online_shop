@@ -33,7 +33,7 @@ export default class DeviceStore {
   }
 
   setTotalCount(totalCount) {
-    this.totalCount = totalCount;
+    this._totalCount = totalCount;
   }
 
   setTypes(types) {

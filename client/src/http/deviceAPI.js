@@ -23,8 +23,8 @@ export const createBrand = async (brand) => {
   return brandData;
 };
 
-export const fetchBrands = async () => {
-  const { data } = await $host.get('api/brand');
+export const fetchBrands = async (typeId, brandId, page, limit = 5) => {
+  const { data } = await $host.get('api/brand', { params: { typeId, brandId, page, limit } });
   console.log('fetchBrands', data);
   return data;
 };
@@ -39,6 +39,7 @@ export const createDevice = async (device) => {
 export const fetchDevices = async () => {
   const { data } = await $host.get('api/device');
   console.log('fetchDevices', data);
+  // device.setLimit(data.count);
   return data;
 };
 
