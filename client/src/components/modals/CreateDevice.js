@@ -49,8 +49,9 @@ const CreateDevice = observer(({ show, onHide }) => {
     });
     console.log(info);
   };
-
-  console.log('device', device.getTypes()[0].id);
+  if (device.getTypes().length > 0) {
+    console.log('device', device.getTypes()[0].id);
+  }
   console.log('user', user);
   return (
     <Modal
