@@ -11,13 +11,16 @@ module.exports = function(role) {
                 return res.status(401).json({message: "Не авторизован"})
             }
             const decoded = jwt.verify(token, process.env.SECRET_KEY)
-            if (decoded.role !== role) {
+            console.log('check role midleware', role, decoded.roles, decoded)
+            const check_role = decoded.roles.some(value => value === role); 
+            console.log('isAdmin',check_role)
+            if (!check_role) {
                 return res.status(403).json({message: "403 Нет доступа"})
             }
             req.user = decoded;
             next()
         } catch (e) {
-            res.status(401).json({message: "Не авторизован catch"})
+            res.status(401).json({message: "Не авторизован catch checkRolemidleware"})
         }
     };
 }

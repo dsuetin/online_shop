@@ -1,12 +1,28 @@
 const sequelize = require('../db')
 const {DataTypes} = require('sequelize')
 
+const Role = sequelize.define(
+    "role", {
+      id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+        comment: 'role id',
+      },
+      name: {
+        type: DataTypes.STRING,
+        unique: true
+      }
+    }
+);
+
 const User = sequelize.define(
     'user', {
         id: {type:DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
         email: {type: DataTypes.STRING, unique: true},
         password: {type: DataTypes.STRING},
-        role: {type: DataTypes.STRING, defaultValue: "USER"}
+        // role: {type: DataTypes.STRING, defaultValue: "USER"},
+        user_roles: {type: DataTypes.ARRAY(DataTypes.STRING), defaultValue: ["USER"]}
     }
 )
 
@@ -125,9 +141,11 @@ module.exports = {
     Type,
     Brand,
     Rating,
-    // BikeClass,
+    Role,
     TypeBrand,
     // TypeBikeClass,
     // BrandBikeClass,
     DeviceInfo
 }
+
+// Neutron939udd@

@@ -10,6 +10,16 @@ export const createType = async (type) => {
   return typeData;
 };
 
+export const createRole = async (role) => {
+  console.log('CreateRole666', role);
+  const roleName = role.value;
+  console.log('roleName', roleName);
+  // const { data } = await $authHost.post('api/role', { role });
+  const { roleData } = await $authHost.post('api/role', { name: roleName });
+  // console.log('CreateRole', data);
+  return roleData;
+};
+
 export const fetchTypes = async () => {
   const { data } = await $host.get('api/type');
   console.log('fetchTypes', data);
@@ -19,7 +29,7 @@ export const fetchTypes = async () => {
 export const createBrand = async (brand) => {
   const brandName = brand.value;
   const { brandData } = await $authHost.post('api/brand', { name: brandName });
-  console.log('CreateBrand', brandData);
+  console.log('CreateBrand in device api', brandData);
   return brandData;
 };
 

@@ -20,6 +20,7 @@ const NavBar = observer(() => {
   const logOut = () => {
     user.setUser({});
     user.setIsAuth(false);
+    navigation(SHOP_ROUTE);
   };
   return (
     <Navbar bg="dark" variant="dark">

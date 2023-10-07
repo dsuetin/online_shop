@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
-import { createBrand } from '../../http/deviceAPI';
+import { createRole } from '../../http/deviceAPI';
 
-const CreateBrand = ({ show, onHide }) => {
+const CreateRole = ({ show, onHide }) => {
   const [value, setValue] = useState('');
-  const addBrand = () => {
-    console.log('CreateBrand in create brand', value);
-    createBrand({ value }).then((inputBrandData) => { return setValue(''); });
+  const addRole = () => {
+    console.log('CreateRole in create role', value);
+    createRole({ value }).then((inputRoleData) => { return setValue(''); });
     onHide();
   };
   return (
@@ -18,7 +18,7 @@ const CreateBrand = ({ show, onHide }) => {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Добавить новый бренд
+          Добавить новую роль
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
@@ -26,16 +26,16 @@ const CreateBrand = ({ show, onHide }) => {
           <Form.Control
             value={value}
             onChange={(e) => { return setValue(e.target.value); }}
-            placeholder="Введите название бренда"
+            placeholder="Введите название роли"
           />
         </Form>
       </Modal.Body>
       <Modal.Footer>
         <Button variant="outline-danger" onClick={onHide}>Закрыть</Button>
-        <Button variant="outline-success" onClick={addBrand}>Добавить</Button>
+        <Button variant="outline-success" onClick={addRole}>Добавить</Button>
       </Modal.Footer>
     </Modal>
   );
 };
 
-export default CreateBrand;
+export default CreateRole;
