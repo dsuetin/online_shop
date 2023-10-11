@@ -23,7 +23,7 @@ export const check = async () => {
   return JwtDecode(data.token);
 };
 
-export const getUsers = async () => {
+export const fetchUsers = async () => {
   // $authHost - присоединяет к запросу токен авторизации
   const { data } = await $authHost.get('api/user/users/');
   console.log('getUsers data', data);
