@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import UserStore from './store/UserStore';
 import DeviceStore from './store/DeviceStore';
+import RoleStore from './store/RoleStore';
 
 // require('dotenv').config({ path: require('find-config')('.env') });
 
@@ -16,6 +17,7 @@ root.render(
   <Context.Provider value={{
     user: new UserStore(),
     device: new DeviceStore(),
+    role: new RoleStore(),
   }}
   >
     <App />

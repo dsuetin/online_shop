@@ -6,6 +6,7 @@ export default class UserStore {
     // this._isAuth = true;
     this._user = {};
     this._users = [];
+    this._selectedUser = this._user;
     makeAutoObservable(this);
   }
 
@@ -31,5 +32,13 @@ export default class UserStore {
 
   getUsers() {
     return this._users;
+  }
+
+  setSelectedUser(user) {
+    this._selectedUser = user;
+  }
+
+  getSelectedUser() {
+    return this._selectedUser;
   }
 }

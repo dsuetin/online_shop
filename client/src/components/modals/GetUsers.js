@@ -5,14 +5,17 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import { Modal, Button, Form, Dropdown, Row, Col } from 'react-bootstrap';
 import { Context } from '../../index';
 import { fetchUsers } from '../../http/userAPI';
+import { fetchRoleUsers, fetchRoles } from '../../http/roleAPI';
 
 const GetUsers = observer(({ show, onHide }) => {
-  const { user, device } = useContext(Context);
+  const { user, device, role } = useContext(Context);
 
   useEffect(() => {
     fetchUsers().then((usersData) => { return user.setUsers(usersData); });
+    // fetchRoleUsers().then((users) => { console.log('fetchRoleUsers4rfvfr4', fetchRoleUsers); });
+    fetchRoles().then((rolesData) => { return role.setRoles(rolesData); });
   }, []);
-
+  // console.log('dsdsd', fetchRoles());
   return (
     <Modal
       onHide={onHide}
@@ -31,14 +34,42 @@ const GetUsers = observer(({ show, onHide }) => {
           {user.getUsers().map((userData) => {
             return (
               <option
-                // onClick={() => { return (device.setSelectedBrand(userData)); }}
+                onClick={() => { return (user.setSelectedUser(userData)); }}
                 key={userData.id}
               >
                 {userData.email}
+                {/* { } */}
+                {/* {user.getSelectedUser().roles[0]} */}
               </option>
             );
           })}
-          <hr />
+          rrrrrrES
+          {/* <hr /> */}
+        </Form.Select>
+        {/* <hr /> */}
+        User roles:
+        {/* {user.getSelectedUser().user_roles} */}
+        {/* <hr /> */}
+        {/* <ListGroup>
+          {user.getSelectedUser().user_roles.map((userData) => {
+            return (
+              <ListGroup.Item>
+                {userData}
+              </ListGroup.Item>
+            );
+          })}
+        </ListGroup> */}
+        <Form.Select aria-label="Default select example">
+          {role.getRoles().map((roleData) => {
+            return (
+              <option
+                onClick={() => { return (role.setSelectedRole(roleData)); }}
+                key={roleData.id}
+              >
+                {roleData.name}
+              </option>
+            );
+          })}
         </Form.Select>
       </Modal.Body>
       <Modal.Footer>
