@@ -4,14 +4,15 @@ import ListGroup from 'react-bootstrap/ListGroup';
 
 import { Modal, Button, Form, Dropdown, Row, Col } from 'react-bootstrap';
 import { Context } from '../../index';
-import { fetchUsers } from '../../http/userAPI';
+import { fetchUsers, fetchFirstUser } from '../../http/userAPI';
 import { fetchRoleUsers, fetchRoles } from '../../http/roleAPI';
 
 const GetUsers = observer(({ show, onHide }) => {
   const { user, device, role } = useContext(Context);
-
+  const [selectedUser, setSelectedUser] = useState('');
   useEffect(() => {
     fetchUsers().then((usersData) => { return user.setUsers(usersData); });
+    // fetchFirstUser().then((firstUsersData) => { return user.setSelectedUser(firstUsersData); });
     // fetchRoleUsers().then((users) => { console.log('fetchRoleUsers4rfvfr4', fetchRoleUsers); });
     fetchRoles().then((rolesData) => { return role.setRoles(rolesData); });
   }, []);
@@ -29,12 +30,16 @@ const GetUsers = observer(({ show, onHide }) => {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Form.Select aria-label="Default select example">
+        <Form.Select
+          aria-label="Default select example"
+          value={selectedUser}
+          onChange={(e) => { setSelectedUser(e.currentTarget.value); }}
+        >
 
           {user.getUsers().map((userData) => {
             return (
               <option
-                onClick={() => { return (user.setSelectedUser(userData)); }}
+                // onClick={() => { return (user.setSelectedUser(userData)); }}
                 key={userData.id}
               >
                 {userData.email}
@@ -43,22 +48,29 @@ const GetUsers = observer(({ show, onHide }) => {
               </option>
             );
           })}
-          rrrrrrES
-          {/* <hr /> */}
+
         </Form.Select>
-        {/* <hr /> */}
+
         User roles:
-        {/* {user.getSelectedUser().user_roles} */}
+        {/* {user.getSelectedUser()} */}
         {/* <hr /> */}
-        {/* <ListGroup>
+        <ListGroup>
           {user.getSelectedUser().user_roles.map((userData) => {
             return (
               <ListGroup.Item>
-                {userData}
+                {/* {userData}
+                {' '}
+                ID user:
+                {' '}
+                {user.getSelectedUser().id}
+                {' '}
+                {user.getSelectedUser().email}
+                {' '} */}
+                {selectedUser}
               </ListGroup.Item>
             );
           })}
-        </ListGroup> */}
+        </ListGroup>
         <Form.Select aria-label="Default select example">
           {role.getRoles().map((roleData) => {
             return (
@@ -74,7 +86,7 @@ const GetUsers = observer(({ show, onHide }) => {
       </Modal.Body>
       <Modal.Footer>
         <Button variant="outline-danger" onClick={onHide}>Закрыть</Button>
-        {/* <Button variant="outline-success" onClick={}>Добавить</Button> */}
+        <Button variant="outline-success" onClick={onHide}>Добавить</Button>
       </Modal.Footer>
     </Modal>
   );
