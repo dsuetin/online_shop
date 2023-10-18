@@ -105,6 +105,18 @@ class UserController {
             console.log(e)
         }
     }
+
+    async get_user(req, res) {
+        try {
+          const email = req.body.email
+        //   console.log('in get_user', email)
+        //   console.log('req', req)
+          const user = await User.findOne({where: {email}})
+          res.json(user)
+        } catch (e) {
+            console.log('in get_user', e)
+        }
+    }
 }
 
 module.exports = new UserController()
