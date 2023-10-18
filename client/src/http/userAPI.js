@@ -29,3 +29,11 @@ export const fetchUsers = async () => {
   console.log('getUsers data', data);
   return data;
 };
+
+export const fetchUser = async (email) => {
+  // $authHost - присоединяет к запросу токен авторизации
+  console.log('fetchUser email', email);
+  const { data } = await $authHost.post('api/user/getuser/', { email });
+  console.log('fetchUser data33', data);
+  return data;
+};

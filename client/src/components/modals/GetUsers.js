@@ -4,16 +4,19 @@ import ListGroup from 'react-bootstrap/ListGroup';
 
 import { Modal, Button, Form, Dropdown, Row, Col } from 'react-bootstrap';
 import { Context } from '../../index';
-import { fetchUsers, fetchFirstUser } from '../../http/userAPI';
+import { fetchUsers, fetchUser } from '../../http/userAPI';
 import { fetchRoleUsers, fetchRoles } from '../../http/roleAPI';
 
 const GetUsers = observer(({ show, onHide }) => {
   const { user, device, role } = useContext(Context);
-  const [selectedUser, setSelectedUser] = useState('');
+  const [fetchedUser, setFetchedUser] = useState('');
   useEffect(() => {
     fetchUsers().then((usersData) => { return user.setUsers(usersData); });
-    // fetchFirstUser().then((firstUsersData) => { return user.setSelectedUser(firstUsersData); });
+    // fetchUser(selectedUser).then((usersData) => { return user.setSelectedUser(usersData); });
+    // fetchUser(selectedUser).then((usersData) => {
+    //  console.log('4', usersData); return user.setSelectedUser(usersData); });
     // fetchRoleUsers().then((users) => { console.log('fetchRoleUsers4rfvfr4', fetchRoleUsers); });
+    // user.setSelectedUser(selectedUser);
     fetchRoles().then((rolesData) => { return role.setRoles(rolesData); });
   }, []);
   // console.log('dsdsd', fetchRoles());
@@ -32,8 +35,21 @@ const GetUsers = observer(({ show, onHide }) => {
       <Modal.Body>
         <Form.Select
           aria-label="Default select example"
-          value={selectedUser}
-          onChange={(e) => { setSelectedUser(e.currentTarget.value); }}
+          // value={selectedUser}
+          // eslint-disable-next-line max-len
+          onChange={(e) => {
+            // setSelectedUser(e.currentTarget.value);
+            // fetchUser
+            // console.log(e.currentTarget.value, 'selectedUser1111222222');
+            console.log(e.target.value, 'selectedUser222222333333');
+            // eslint-disable-next-line max-len
+            // fetchUser(e.currentTarget.value).then((fetcheduser) => { console.log('iam fetch user!!!!1', fetcheduser); user.setSelectedUser(fetcheduser); });
+            // eslint-disable-next-line max-len
+            fetchUser(e.target.value).then((fetcheduser) => { setFetchedUser(fetcheduser); user.setSelectedUser(fetcheduser); });
+            // .then((usersData) => { return user.setSelectedUser(usersData); });
+            // console.log('fetchedUser', fetchedUser);
+            // user.setSelectedUser();
+          }}
         >
 
           {user.getUsers().map((userData) => {
@@ -56,17 +72,18 @@ const GetUsers = observer(({ show, onHide }) => {
         {/* <hr /> */}
         <ListGroup>
           {user.getSelectedUser().user_roles.map((userData) => {
+          // {selectedUser.user_roles.map((userData) => {
             return (
               <ListGroup.Item>
-                {/* {userData}
+                {userData}
                 {' '}
                 ID user:
                 {' '}
                 {user.getSelectedUser().id}
                 {' '}
                 {user.getSelectedUser().email}
-                {' '} */}
-                {selectedUser}
+                {' '}
+
               </ListGroup.Item>
             );
           })}
