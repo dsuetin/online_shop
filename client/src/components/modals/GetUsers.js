@@ -19,6 +19,17 @@ const GetUsers = observer(({ show, onHide }) => {
     // user.setSelectedUser(selectedUser);
     fetchRoles().then((rolesData) => { return role.setRoles(rolesData); });
   }, []);
+  const addRole = () => {
+    const rolesArray = user.getSelectedUser().user_roles.map((userRole) => {
+      return { userRole };
+    });
+
+    console.log('Role in add role', user.getSelectedUser().user_roles[0], rolesArray);
+
+    // eslint-disable-next-line array-callback-return, no-unused-expressions, max-len
+    const isRoleBelongToUser = rolesArray.some((value) => { return value.userRole === role.getSelectedRole().name; });
+    console.log('checkRole', isRoleBelongToUser);
+  };
   // console.log('dsdsd', fetchRoles());
   return (
     <Modal
@@ -29,65 +40,48 @@ const GetUsers = observer(({ show, onHide }) => {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Добавить новую роль
+          Добавить/удалить новую роль
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
+        Выберите пользователя:
         <Form.Select
           aria-label="Default select example"
-          // value={selectedUser}
           // eslint-disable-next-line max-len
+          defaultValue={fetchUsers().then((usersInDefault) => { user.setSelectedUser(usersInDefault[0]); })}
           onChange={(e) => {
-            // setSelectedUser(e.currentTarget.value);
-            // fetchUser
-            // console.log(e.currentTarget.value, 'selectedUser1111222222');
-            console.log(e.target.value, 'selectedUser222222333333');
-            // eslint-disable-next-line max-len
-            // fetchUser(e.currentTarget.value).then((fetcheduser) => { console.log('iam fetch user!!!!1', fetcheduser); user.setSelectedUser(fetcheduser); });
             // eslint-disable-next-line max-len
             fetchUser(e.target.value).then((fetcheduser) => { setFetchedUser(fetcheduser); user.setSelectedUser(fetcheduser); });
-            // .then((usersData) => { return user.setSelectedUser(usersData); });
-            // console.log('fetchedUser', fetchedUser);
-            // user.setSelectedUser();
           }}
         >
 
           {user.getUsers().map((userData) => {
             return (
               <option
-                // onClick={() => { return (user.setSelectedUser(userData)); }}
                 key={userData.id}
               >
                 {userData.email}
-                {/* { } */}
-                {/* {user.getSelectedUser().roles[0]} */}
               </option>
             );
           })}
 
         </Form.Select>
 
-        User roles:
+        Роли пользователя:
         {/* {user.getSelectedUser()} */}
         {/* <hr /> */}
         <ListGroup>
-          {user.getSelectedUser().user_roles.map((userData) => {
+          {user.getSelectedUser().user_roles.map((userRole) => {
           // {selectedUser.user_roles.map((userData) => {
             return (
               <ListGroup.Item>
-                {userData}
-                {' '}
-                ID user:
-                {' '}
-                {user.getSelectedUser().id}
-                {' '}
-                {user.getSelectedUser().email}
-                {' '}
-
+                {userRole}
               </ListGroup.Item>
             );
           })}
         </ListGroup>
+
+        Выберите роль:
         <Form.Select aria-label="Default select example">
           {role.getRoles().map((roleData) => {
             return (
@@ -100,10 +94,13 @@ const GetUsers = observer(({ show, onHide }) => {
             );
           })}
         </Form.Select>
+        Selected role:
+        {' '}
+        {role.getSelectedRole().name}
       </Modal.Body>
       <Modal.Footer>
         <Button variant="outline-danger" onClick={onHide}>Закрыть</Button>
-        <Button variant="outline-success" onClick={onHide}>Добавить</Button>
+        <Button variant="outline-success" onClick={addRole}>Добавить</Button>
       </Modal.Footer>
     </Modal>
   );
